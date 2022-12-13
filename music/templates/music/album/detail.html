@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ album.album_title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ album.album_title }} - {{ album.album_artist }}</h1>
+    <p></p>
+    <p>
+        Release year: {{ album.release_year }}<br>
+        Genre: {{ album.genre }}<br>
+        Number of discs: {{ album.number_of_discs }}<br>
+        Compilation: 
+        {% if album.compilation == True %}
+            Yes
+        {% else %}
+            No
+        {% endif %}<br>
+        Album rating: {% if album.rating == 'empty' %}
+            -
+        {% else %}
+            {{ album.rating }}
+        {% endif %}
+        /5<br><br>
+
+        Tracklist:<br>
+        {% for i in album.track_set.all %}
+            {{ i.track_number }}. {{ i.title }}<br>
+        {% endfor %}
+    </p>
+{% endblock %}
