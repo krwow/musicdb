@@ -54,7 +54,8 @@ def album_create(request):
 def add_track(request):
     if request.method == 'POST':
         # If form has been sent.
-        form = TrackAddForm(data=request.POST)
+        # Extra "request.user" for customizing "from_album" in ModelForm.
+        form = TrackAddForm(request.user, data=request.POST)
         if form.is_valid():
             # Form data are valid.
             cd = form.cleaned_data
@@ -66,7 +67,8 @@ def add_track(request):
             # Redirect to new created item detail view.
             return redirect(new_track.get_absolute_url())
     else:
-        form = TrackAddForm()
+        # Extra "request.user" for customizing "from_album" in ModelForm.
+        form = TrackAddForm(request.user)
     return render(request,
                 'music/album/track.html',
                 {'section': 'track',
