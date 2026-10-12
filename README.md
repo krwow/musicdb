@@ -50,3 +50,5 @@ As musicdb remains in development, at this moment emails with link to reset user
 
 [1]: ./requirements.txt
 [2]: https://github.com/krwow/musicdb/archive/refs/heads/main.zip
+
+<br>*First commit: 13.12.2022.*
